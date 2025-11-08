@@ -42,5 +42,5 @@ const startServer = async () => {
     }
 }
 
-
-startServer();
+// create server from here 
+startServer()
