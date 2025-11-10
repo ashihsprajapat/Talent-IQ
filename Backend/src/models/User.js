@@ -8,6 +8,6 @@ const userSchema = new Schema({
     profileImage: { type: String, default: "" }
 }, { timestamps: true })
 
-const User = mode("User", userSchema);
+const User = model("User", userSchema);
 
 export default User;

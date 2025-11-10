@@ -5,7 +5,7 @@ import path from 'path'
 import { ENV } from './lib/env.js';
 import { connectDB } from './lib/db.js';
 import cors from 'cors'
-import {serve} from 'inngest/clerk'
+import { serve } from "inngest/express";
 import { functions, inngest } from './lib/innjest.js';
 
 const app = express();
