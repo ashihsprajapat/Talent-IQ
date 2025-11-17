@@ -7,6 +7,8 @@ import { connectDB } from './lib/db.js';
 import cors from 'cors'
 import { serve } from "inngest/express";
 import { functions, inngest } from './lib/innjest.js';
+import { clerkMiddleware } from '@clerk/express'
+import chatRoute from './routes/chatRoutes.js';
 
 const app = express();
 
@@ -14,19 +16,21 @@ const __dirname = path.resolve()
 
 
 app.use(express.json())
+app.use(clerkMiddleware())
 
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }))
 
-app.use("/api/inngest", serve({client : inngest, functions}) )
+app.use("/api/inngest", serve({ client: inngest, functions }))
 
+app.use("/chat", chatRoute)
 
 app.get("/test", (req, res) => {
     res.json({ message: "Api is working successfully" })
 })
 
-app.get("/books", (req, res) => {
-    res.json({ message: "this is the book endpoint" })
-})
+
+
+
 
 // this is only for developementn 
 //make our app ready for deployment
